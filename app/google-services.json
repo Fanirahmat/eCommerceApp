@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "175734283767",
+    "firebase_url": "https://ecommerce-bd81e.firebaseio.com",
+    "project_id": "ecommerce-bd81e",
+    "storage_bucket": "ecommerce-bd81e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175734283767:android:2b3c5c7020f868b3d962f2",
+        "android_client_info": {
+          "package_name": "com.mfanir.ecommerceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175734283767-do5us5fcll9vv7tgessiahk4fn5ru4vg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mfanir.ecommerceapp",
+            "certificate_hash": "31bfab0e69b19cea0f4d34b6ad06b10aded92e9f"
+          }
+        },
+        {
+          "client_id": "175734283767-f81i2snehncv2fl9ogtqoet3258a09to.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyJYAz8CxIkmk_KOH2kOVD3L8U0DCgKP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175734283767-f81i2snehncv2fl9ogtqoet3258a09to.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
