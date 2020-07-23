@@ -24,6 +24,7 @@ class CartFragment : Fragment() {
     private var cartItemsAdapter: CartItemsAdapter? =null
     private var mCart = ArrayList<Cart>()
     private var total:Int = 0
+    private var map = HashMap<String, Any>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +43,6 @@ class CartFragment : Fragment() {
         val phone = Paper.book().read("phone","1")
 
         checkOrderState(phone)
-
         rv = requireView().findViewById(R.id.rv_cart)
         rv!!.setHasFixedSize(true)
         rv!!.layoutManager = LinearLayoutManager(context)
@@ -51,13 +51,19 @@ class CartFragment : Fragment() {
 
         btn_next.setOnClickListener {
             if (total != 0) {
+                //mDb!!.child("Orders").child(phone).updateChildren(map)
                 val intent = Intent(context, ConfirmFinalOrderActivity::class.java)
                 intent.putExtra("total", total.toString())
                 startActivity(intent)
             }
+            else
+            {
+                Toast.makeText(context, "Cart kosong...", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
+
 
     private fun checkOrderState(phone: String) {
 
@@ -65,26 +71,25 @@ class CartFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists())
                 {
-                    val shippingState = snapshot.child("state").value.toString()
+                    val orderState = snapshot.child("orderState").value.toString()
                     //val name = snapshot.child("name").value.toString()
-                    if (shippingState.equals("shipping"))
+                    if (orderState.equals("shiped"))
                     {
                         msg.text = "Pesananmu sedang dikirim"
                         msg.visibility = View.VISIBLE
-                        btn_next.visibility = View.GONE
-                        rv_cart.visibility = View.INVISIBLE
+                        btn_next.visibility = View.VISIBLE
                     }
-                    else if (shippingState.equals("pending"))
+                    else if (orderState.equals("pending"))
                     {
                         msg.text = "Pesananmu menunggu konfirmasi penjual"
                         msg.visibility = View.VISIBLE
-                        btn_next.visibility = View.GONE
+                        btn_next.visibility = View.INVISIBLE
                         rv_cart.visibility = View.INVISIBLE
                     }
                 }
                 else
                 {
-                    msg.visibility = View.GONE
+                    msg.visibility = View.INVISIBLE
                     btn_next.visibility = View.VISIBLE
                 }
             }
@@ -108,10 +113,12 @@ class CartFragment : Fragment() {
                     }
                 }
 
+                //
+
                 for (a in mCart.indices) {
                     total += mCart[a].price!!.toInt()
                 }
-                mCart.add(Cart("","", "", "Total Bayar", total.toString(),"",""))
+                mCart.add(Cart("","", "", "","Total Bayar",total.toString(),"","",""))
 
 
                 cartItemsAdapter = context?.let { CartItemsAdapter(mCart, it) }

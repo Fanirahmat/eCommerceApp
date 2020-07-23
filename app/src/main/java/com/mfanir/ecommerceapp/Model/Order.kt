@@ -10,4 +10,5 @@ data class Order (
     var name: String? = "",
     var phone: String? = "",
     var time: String? = "",
+    var orderState: String? = ""
 ): Parcelable

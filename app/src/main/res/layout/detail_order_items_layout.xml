@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorGrey2"
-    android:orientation="vertical">
-
+    android:background="@color/colorGrey2">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cardViewAdmin"
         android:layout_width="100dp"
         android:layout_height="70dp"
         android:layout_marginTop="8dp"
@@ -20,14 +18,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_image_cart"
+            android:id="@+id/iv_image_cartAdmin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/tv_productName"
+        android:id="@+id/tv_productName_cartAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -37,11 +36,22 @@
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toEndOf="@+id/cardViewAdmin"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_price_cart"
+        android:id="@+id/tv_quantity_cartAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/righteous"
+        android:text="X 5"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toEndOf="@+id/cardViewAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/tv_productName_cartAdmin"/>
+
+    <TextView
+        android:id="@+id/tv_price_cartAdmin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -53,27 +63,9 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/tv_quantity_cart" />
+        app:layout_constraintStart_toEndOf="@+id/cardViewAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/tv_quantity_cartAdmin"/>
 
-    <TextView
-        android:id="@+id/tv_quantity_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/righteous"
-        android:text="X 5"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/tv_productName" />
 
-    <ImageView
-        android:id="@+id/btn_delete_cart"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_btn_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

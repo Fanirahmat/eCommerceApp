@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Admin.Product.SelectCategory"></activity>
+        <activity android:name=".Admin.Order.OverviewUserOrderActivity"></activity>
+        <activity android:name=".Admin.Product.ProductAdminDetailActivity" />
+        <activity android:name=".Admin.Order.UserOrderDetailActivity" />
+        <activity android:name=".Admin.Product.SelectCategory" />
         <activity android:name=".User.Cart.ConfirmFinalOrderActivity" />
         <activity android:name=".User.Dashboard.ProductDetailActivity" />
         <activity android:name=".SplashScreenActivity">

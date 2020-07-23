@@ -1,6 +1,7 @@
 package com.mfanir.ecommerceapp.Admin.Order
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +34,9 @@ class AdminOrderItemsAdapter (
         holder.time.text = order!!.time
 
         holder.btn_detail.setOnClickListener {
-
+            val intent = Intent(mContext, UserOrderDetailActivity::class.java)
+            intent.putExtra("phone", order.phone)
+            mContext!!.startActivity(intent)
         }
     }
 

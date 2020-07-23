@@ -147,6 +147,7 @@ class AddProductActivity : AppCompatActivity() {
         map["price"] = price!!
         map["pname"] = nameProduct!!
         map["seller"] = FirebaseAuth.getInstance().currentUser!!.phoneNumber!!
+        map["search"] = nameProduct!!.toLowerCase()
         refDb.child("Products").child(randomKey!!).updateChildren(map)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {

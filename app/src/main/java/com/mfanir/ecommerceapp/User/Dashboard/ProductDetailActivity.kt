@@ -52,20 +52,20 @@ class ProductDetailActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().reference
         ref.child("Orders").child(phone).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 if (snapshot.exists())
                 {
-                    val shippingState = snapshot.child("state").value.toString()
+                    val orderState = snapshot.child("orderState").value.toString()
                     //val name = snapshot.child("name").value.toString()
-                    if (shippingState.equals("shipping"))
+                    if (orderState.equals("shiped"))
                     {
-                        tv_msg.text = "Tidak dapat menambahkan pesan apabila pesanan sebelumnya belum terkirim"
-                        tv_msg.visibility = View.VISIBLE
-                        cart_btn.visibility = View.INVISIBLE
-                        number_btn.visibility = View.INVISIBLE
+                        tv_msg.visibility = View.INVISIBLE
+                        cart_btn.visibility = View.VISIBLE
+                        number_btn.visibility = View.VISIBLE
                     }
-                    else if (shippingState.equals("pending"))
+                    else if (orderState.equals("pending"))
                     {
-                        tv_msg.text = "Tidak dapat menambahkan pesan apabila pesanan sebelumnya belum terkirim"
+                        tv_msg.text = "Tidak dapat menambahkan pesanan apabila semua pesanan sebelumnya belum terkirim"
                         tv_msg.visibility = View.VISIBLE
                         cart_btn.visibility = View.INVISIBLE
                         number_btn.visibility = View.INVISIBLE
@@ -112,14 +112,11 @@ class ProductDetailActivity : AppCompatActivity() {
             .updateChildren(map!!)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-
                     ref.child("Admin View").child(phonePaper).child("Products").child(pid!!)
                         .updateChildren(map!!)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(this, "Added to cart list", Toast.LENGTH_LONG).show()
-
-                                startActivity(Intent(this, HomeActivity::class.java))
+                                addOrder(pid!!, phonePaper)
                             }
                             else
                             {
@@ -132,6 +129,20 @@ class ProductDetailActivity : AppCompatActivity() {
                 }
             }
 
+    }
+
+    private fun addOrder(pid: String, phonePaper: String) {
+        val data = HashMap<String, Any>()
+        data["pid"] = pid
+        data["seller"] = seller!!
+        data["shippingState"] = "pending"
+        val ref = FirebaseDatabase.getInstance().reference
+        ref.child("Orders").child(phonePaper).child("items").child(pid).updateChildren(data)
+            .addOnCompleteListener {
+                Toast.makeText(this, "Added to cart list", Toast.LENGTH_SHORT).show()
+                finish()
+                //startActivity(Intent(this, HomeActivity::class.java))
+            }
     }
 
     private fun getDetail(pid: String?) {

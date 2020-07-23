@@ -45,14 +45,14 @@ class ConfirmFinalOrderActivity : AppCompatActivity() {
             map["address"] = tv_address.text
             map["name"] = tv_name.text
             map["phone"] = phone.toString()
-            map["state"] = "pending"
+            map["orderState"] = "pending"
             map["date"] = saveCurrentDate!!
             map["time"] = saveCurrentTime!!
-            //map["totalAmount"] = intent.getStringExtra("total")
+            map["totalAmount"] = intent.getStringExtra("total")
             mDb.child("Orders").child(phone.toString()).updateChildren(map)
                 .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Berhasil menambahkan pesanan", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Berhasil mengupdate pesanan", Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }
