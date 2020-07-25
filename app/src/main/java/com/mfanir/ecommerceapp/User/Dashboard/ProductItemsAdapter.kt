@@ -41,7 +41,6 @@ class ProductItemsAdapter(
 
         holder.pname.text = product!!.getPname()
         Picasso.get().load(product.getImage()).into(holder.image)
-        holder.desc.text = product!!.getDescription()
         holder.price.text = "Rp." + product!!.getPrice() + ",00"
 
         holder.itemView.setOnClickListener {
@@ -56,10 +55,6 @@ class ProductItemsAdapter(
         var pname: TextView =itemView.findViewById(R.id.product_name_item)
         var price: TextView = itemView.findViewById(R.id.product_price_item)
         var image: ImageView = itemView.findViewById(R.id.product_image_item)
-        var desc: TextView = itemView.findViewById(R.id.product_desc_item)
-
-
-
 
     }
 

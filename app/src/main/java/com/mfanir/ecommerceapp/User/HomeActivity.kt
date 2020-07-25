@@ -6,7 +6,6 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.mfanir.ecommerceapp.R
 import com.mfanir.ecommerceapp.User.Cart.CartFragment
-import com.mfanir.ecommerceapp.User.Category.CategoryFragment
 import com.mfanir.ecommerceapp.User.Dashboard.DashboardFragment
 import com.mfanir.ecommerceapp.User.Order.OrderFragment
 import com.mfanir.ecommerceapp.User.Setting.SettingFragment
@@ -19,7 +18,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val cart = CartFragment()
-        val category = CategoryFragment()
         val dashboard = DashboardFragment()
         val order = OrderFragment()
         val setting = SettingFragment()
@@ -28,22 +26,39 @@ class HomeActivity : AppCompatActivity() {
 
         iv_cart.setOnClickListener {
             setFragment(cart)
+
+            changeIcon(iv_cart, R.drawable.ic_cart_active)
+            changeIcon(iv_dashboard, R.drawable.ic_home)
+            changeIcon(iv_order, R.drawable.ic_order)
+            changeIcon(iv_setting, R.drawable.ic_profil)
         }
 
-        iv_category.setOnClickListener {
-            setFragment(category)
-        }
 
         iv_dashboard.setOnClickListener {
             setFragment(dashboard)
+
+            changeIcon(iv_cart, R.drawable.ic_cart)
+            changeIcon(iv_dashboard, R.drawable.ic_home_active)
+            changeIcon(iv_order, R.drawable.ic_order)
+            changeIcon(iv_setting, R.drawable.ic_profil)
         }
 
         iv_order.setOnClickListener {
             setFragment(order)
+
+            changeIcon(iv_cart, R.drawable.ic_cart)
+            changeIcon(iv_dashboard, R.drawable.ic_home)
+            changeIcon(iv_order, R.drawable.ic_order_active)
+            changeIcon(iv_setting, R.drawable.ic_profil)
         }
 
         iv_setting.setOnClickListener {
             setFragment(setting)
+
+            changeIcon(iv_cart, R.drawable.ic_cart)
+            changeIcon(iv_dashboard, R.drawable.ic_home)
+            changeIcon(iv_order, R.drawable.ic_order)
+            changeIcon(iv_setting, R.drawable.ic_profil_active)
         }
     }
 

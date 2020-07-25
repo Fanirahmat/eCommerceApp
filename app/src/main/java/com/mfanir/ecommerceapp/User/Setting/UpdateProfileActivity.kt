@@ -140,7 +140,7 @@ class UpdateProfileActivity : AppCompatActivity() {
             val fileRef = storage.child("User_profile_image").child(phonePaper + ".jpg")
 
             uploadTask = fileRef.putFile(imageUri!!)
-            uploadTask.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>>{ task ->
+            (uploadTask as UploadTask).continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>>{ task ->
                 if (!task.isSuccessful) {
                     task.exception?.let {
                         throw it

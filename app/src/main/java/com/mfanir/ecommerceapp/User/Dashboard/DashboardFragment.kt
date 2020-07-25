@@ -26,7 +26,6 @@ class DashboardFragment : Fragment() {
     private var mProduct: List<Product>? = null
     private var productItemsAdapter: ProductItemsAdapter? = null
     private var rv: RecyclerView? = null
-    private lateinit var search: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,13 +35,14 @@ class DashboardFragment : Fragment() {
         val view:View = inflater.inflate(R.layout.fragment_dashboard, container, false)
         mDatabase = FirebaseDatabase.getInstance().getReference("Products")
 
-        search = view.findViewById(R.id.searchProductET)
+        //search = view.findViewById(R.id.searchProductET)
 
         rv = view.findViewById(R.id.rv_product)
         rv!!.setHasFixedSize(true)
         rv!!.layoutManager = LinearLayoutManager(context)
         mProduct = ArrayList()
 
+        /*
         search!!.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -58,6 +58,8 @@ class DashboardFragment : Fragment() {
 
         })
 
+         */
+
         getData()
 
         return view
@@ -67,35 +69,7 @@ class DashboardFragment : Fragment() {
         mDatabase.orderByChild("search").addValueEventListener(object : ValueEventListener{
             override fun onDataChange(data: DataSnapshot) {
                 (mProduct as ArrayList<Product>).clear()
-                if (search!!.text.toString() == "") {
-                    for (snapshot in data.children) {
-                        val product: Product? = snapshot.getValue(Product::class.java)
-
-                        if (product != null) {
-                            (mProduct as ArrayList<Product>).add(product)
-                        }
-                    }
-                    productItemsAdapter =
-                        context?.let { ProductItemsAdapter(mProduct as ArrayList<Product>, it) }
-                    rv!!.adapter = productItemsAdapter
-                }
-            }
-
-            override fun onCancelled(e: DatabaseError) {
-                Toast.makeText(context, ""+e.message, Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-
-    private fun showSearchData(str: String) {
-        val queryProduct =  mDatabase.orderByChild("search")
-            .startAt(str)
-            .endAt(str + "\uf8ff")
-
-        queryProduct.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                (mProduct as ArrayList<Product>).clear()
-                for (snapshot in snapshot.children) {
+                for (snapshot in data.children) {
                     val product: Product? = snapshot.getValue(Product::class.java)
 
                     if (product != null) {
@@ -105,15 +79,14 @@ class DashboardFragment : Fragment() {
                 productItemsAdapter =
                     context?.let { ProductItemsAdapter(mProduct as ArrayList<Product>, it) }
                 rv!!.adapter = productItemsAdapter
-
             }
 
-            override fun onCancelled(error: DatabaseError) {
-
+            override fun onCancelled(e: DatabaseError) {
+                Toast.makeText(context, ""+e.message, Toast.LENGTH_LONG).show()
             }
-
         })
-
     }
+
+
 
 }

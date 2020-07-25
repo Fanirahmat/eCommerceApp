@@ -30,9 +30,8 @@
         <activity
             android:name=".User.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            />
         <activity android:name=".Admin.AdminHomeActivity" />
-        <activity android:name=".Admin.CategoryActivity" />
         <activity android:name=".Admin.Product.AddProductActivity" />
         <activity android:name=".Auth.VerifyPhoneActivity" />
         <activity android:name=".Auth.SignUpActivity" />
