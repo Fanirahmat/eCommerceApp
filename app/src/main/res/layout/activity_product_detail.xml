@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGrey2"
+    android:background="@color/colorPrimaryWhite"
     tools:context=".User.Dashboard.ProductDetailActivity">
 
     <TextView
@@ -30,10 +30,10 @@
         android:id="@+id/iv_product"
         android:layout_width="0dp"
         android:layout_height="300dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_product_name"
@@ -90,12 +90,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:elevation="6dp"
-        app:backGroundColor="@color/colorRed"
+        app:backGroundColor="@color/colorGrey2"
         app:backgroundDrawable="@drawable/btn_background_3"
         app:finalNumber="10"
         app:initialNumber="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:textColor="@color/colorPrimaryDark"
         app:textSize="8sp">
 
     </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>

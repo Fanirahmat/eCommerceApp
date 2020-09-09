@@ -39,13 +39,13 @@ class ProductItemsAdapter(
     override fun onBindViewHolder(holder: ProductItemsAdapter.ViewHolder, position: Int) {
         val product: Product? = mData[position]
 
-        holder.pname.text = product!!.getPname()
-        Picasso.get().load(product.getImage()).into(holder.image)
-        holder.price.text = "Rp." + product!!.getPrice() + ",00"
+        holder.pname.text = product!!.pname
+        Picasso.get().load(product.image).into(holder.image)
+        holder.price.text = "Rp." + product!!.price + ",00"
 
         holder.itemView.setOnClickListener {
             val intent = Intent(mContext, ProductDetailActivity::class.java)
-            intent.putExtra("pid", product.getPid()).putExtra("seller", product.getSeller())
+            intent.putExtra("pid", product.pid).putExtra("seller", product.seller)
             mContext!!.startActivity(intent)
         }
 

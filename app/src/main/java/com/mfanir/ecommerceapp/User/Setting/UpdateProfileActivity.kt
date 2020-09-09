@@ -122,13 +122,7 @@ class UpdateProfileActivity : AppCompatActivity() {
 
     }
 
-    private fun saveDataWithImage(
-        name: String,
-        username: String,
-        email: String,
-        address: String,
-        password: String
-    ) {
+    private fun saveDataWithImage(name: String, username: String, email: String, address: String, password: String) {
         var loadingBar = ProgressDialog(this)
         loadingBar.setTitle("Update Profile")
         loadingBar.setMessage("please wait, we are updating your account information")

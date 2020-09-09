@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_home" />
+            app:srcCompat="@drawable/ic_home_active" />
 
 
         <ImageView
@@ -50,7 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_cart" />
+            app:srcCompat="@drawable/ic_profil" />
     </LinearLayout>
 
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.mfanir.ecommerceapp.Admin.Order.DetailOrderAdapter
 import com.mfanir.ecommerceapp.Model.Product
 
 import com.mfanir.ecommerceapp.R
@@ -55,7 +56,7 @@ class ProductFragment : Fragment() {
                 mProduct.clear()
                 for (data in snapshot.children) {
                     val product: Product? = data.getValue(Product::class.java)
-                    val sellerID = product!!.getSeller()
+                    val sellerID = product!!.seller
                     if (product != null) {
                         if (sellerID == "+62"+phone) {
                             mProduct.add(product)
@@ -63,7 +64,11 @@ class ProductFragment : Fragment() {
                     }
 
                 }
-                productAdapter = context?.let { ProductAdapter(mProduct, it) }
+                productAdapter = ProductAdapter(mProduct) {
+                    val intent = Intent(context, ProductAdminDetailActivity::class.java)
+                    intent.putExtra("data", it)
+                    startActivity(intent)
+                }
                 rv!!.adapter = productAdapter
             }
 

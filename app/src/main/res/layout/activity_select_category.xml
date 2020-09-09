@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/electronic" />
+                app:srcCompat="@drawable/elektronik" />
 
             <ImageView
                 android:id="@+id/fashion_kids"
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/film_and_musik" />
+                app:srcCompat="@drawable/film_music" />
 
         </LinearLayout>
 
@@ -122,7 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/game" />
+                app:srcCompat="@drawable/games" />
 
             <ImageView
                 android:id="@+id/hp_and_tablet"
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/kesehatan" />
+                app:srcCompat="@drawable/healthy" />
 
             <ImageView
                 android:id="@+id/foods"

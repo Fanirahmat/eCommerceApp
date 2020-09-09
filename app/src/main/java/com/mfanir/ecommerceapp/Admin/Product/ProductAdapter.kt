@@ -14,26 +14,19 @@ import com.squareup.picasso.Picasso
 
 class ProductAdapter (
     private var mData : List<Product>,
-    private var mContext : Context
+    private var listener : (Product) -> Unit
 ) : RecyclerView.Adapter<ProductAdapter.ViewHolder?>   () {
+
+    lateinit var contextAdapter : Context
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder {
-        val view = LayoutInflater.from(mContext).inflate(R.layout.product_admin_items_layout, parent, false )
+        contextAdapter = parent.context
+        val view = LayoutInflater.from(contextAdapter).inflate(R.layout.product_admin_items_layout, parent, false )
         return ProductAdapter.ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ProductAdapter.ViewHolder, position: Int) {
-        val product: Product? = mData[position]
-
-        holder.pname.text = product!!.getPname()
-        holder.price.text = product.getPrice()
-        holder.category.text = product.getCategory()
-        Picasso.get().load(product.getImage()).into(holder.image)
-
-        holder.itemView.setOnClickListener{
-            val intent = Intent(mContext, ProductAdminDetailActivity::class.java)
-            mContext.startActivity(intent)
-        }
-
+        holder.bindItem(mData[position], listener, contextAdapter)
     }
 
     override fun getItemCount(): Int {
@@ -45,6 +38,17 @@ class ProductAdapter (
         var price: TextView = itemView.findViewById(R.id.tv_priceAdmin)
         var image: ImageView = itemView.findViewById(R.id.iv_poductAdmin)
         var category: TextView = itemView.findViewById(R.id.tv_productCategory_admin)
+
+        fun bindItem(product: Product, listener: (Product) -> Unit, context: Context) {
+            pname.text = product.pname
+            price.text = product.price
+            category.text = product.category
+            Picasso.get().load(product.image).into(image)
+
+            itemView.setOnClickListener {
+                listener(product)
+            }
+        }
     }
 
 }

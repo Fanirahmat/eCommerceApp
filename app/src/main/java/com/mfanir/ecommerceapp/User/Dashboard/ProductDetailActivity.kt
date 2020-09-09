@@ -151,12 +151,12 @@ class ProductDetailActivity : AppCompatActivity() {
         ref.child(pid!!).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val product: Product? = snapshot.getValue(Product::class.java)
-                Picasso.get().load(product!!.getImage()).into(iv_product)
-                tv_product_name.text = product!!.getPname()
-                tv_product_desc.text = product!!.getDescription()
-                tv_price_cart.text = product!!.getPrice()
+                Picasso.get().load(product!!.image).into(iv_product)
+                tv_product_name.text = product!!.pname
+                tv_product_desc.text = product!!.description
+                tv_price_cart.text = product!!.price
 
-                map!!["image"] = product!!.getImage().toString()
+                map!!["image"] = product!!.image.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {

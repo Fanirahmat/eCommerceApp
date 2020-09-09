@@ -11,6 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="1dp"
+        android:background="@color/colorPrimaryWhite"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +23,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:background="@color/colorGrey2"
+        android:background="@color/colorPrimaryWhite"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,29 +32,29 @@
 
         <ImageView
             android:id="@+id/iv_dashboard"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_home_active" />
 
         <ImageView
             android:id="@+id/iv_order"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_order" />
 
         <ImageView
             android:id="@+id/iv_cart"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_cart" />
 
         <ImageView
             android:id="@+id/iv_setting"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_profil" />
     </LinearLayout>

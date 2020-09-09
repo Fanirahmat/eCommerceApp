@@ -26,15 +26,27 @@ class AdminHomeActivity : AppCompatActivity() {
 
         iv_product.setOnClickListener {
             setFragment(product)
+
+            changeIcon(iv_product, R.drawable.ic_home_active)
+            changeIcon(iv_adminOrder, R.drawable.ic_order)
+            changeIcon(iv_adminSetting, R.drawable.ic_profil)
         }
 
         iv_adminOrder.setOnClickListener {
             setFragment(order)
+
+            changeIcon(iv_product, R.drawable.ic_home)
+            changeIcon(iv_adminOrder, R.drawable.ic_order_active)
+            changeIcon(iv_adminSetting, R.drawable.ic_profil)
         }
 
         /*
         iv_adminSetting.setOnClickListener {
             setFragment(product)
+
+            changeIcon(iv_product, R.drawable.ic_home)
+            changeIcon(iv_adminOrder, R.drawable.ic_order)
+            changeIcon(iv_adminSetting, R.drawable.ic_profil_active)
         }
 
          */
